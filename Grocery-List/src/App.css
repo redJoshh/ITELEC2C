@@ -1,0 +1,90 @@
+/* App.css */
+.app {
+  font-family: "Poppins", sans-serif;
+  max-width: 450px;
+  margin: auto;
+  text-align: center;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #2c3e50;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form input {
+  padding: 8px;
+  border: 2px solid #27ae60;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form input:focus {
+  border-color: #2ecc71;
+}
+
+.form button {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.form button:hover {
+  background: #2ecc71;
+}
+
+.grocery-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.grocery-list li {
+  display: flex;
+  justify-content: space-between;
+  background: #ecf0f1;
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.grocery-list li:hover {
+  background: #d5dbdb;
+}
+
+.grocery-list .purchased {
+  text-decoration: line-through;
+  color: #95a5a6;
+}
+
+.stats {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2c3e50;
+  background: #ecf0f1;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}

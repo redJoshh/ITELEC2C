@@ -36,7 +36,7 @@ function CharacterIcons({ selectedGame, activeChar, setActiveChar }) {
               />
             </div>
             <span
-              className={`mt-2 teko text-lg italic tracking-tighter skew-x-12 transition-colors ${isActive ? "text-red-500" : "text-gray-500 group-hover: text-white"}
+              className={`mt-2 teko text-lg italic tracking-tighter skew-x-12 transition-colors ${isActive ? "text-red-500" : "text-white group-hover: text-white"}
             ${isActive ? "text-red-500" : "text-gray-400 group-hover:text-white"}
             ${!isExisting && "hidden"}
             `}

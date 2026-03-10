@@ -8,13 +8,12 @@ import MainMenu from "./components/MainMenu";
 import { tekkenCharacters } from "./data/TekkenCharacters";
 
 function App() {
-  const [activeChar, setActiveChar] = useState(tekkenCharacters[2]);
+  const [activeChar, setActiveChar] = useState(tekkenCharacters[-1]);
 
   useEffect(() => {
     AOS.init({
       duration: 1200,
       once: true,
-      easing: "ease-out-back",
     });
   }, []);
 
