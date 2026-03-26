@@ -6,6 +6,7 @@ import Search from "./components/Search";
 
 import SongList from "./components/SongList";
 import MusicListBox from "./components/MusicListBox";
+import PlaylistBox from "./components/PlaylistBox";
 
 const tempMusicData = [
   {
@@ -86,30 +87,9 @@ export default function App() {
       </Navbar>
 
       <main className="main">
-        <MusicListBox />
+        <MusicListBox music={music} />
 
-        <div className="playlist-container">
-          <div className="list-header">
-            <img
-              className="playlist-logo"
-              src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
-              alt="Playlist"
-            />
-            <div>
-              <h2>My Playlist ({playlist.length})</h2>
-              <p>Total songs in playlist</p>
-            </div>
-          </div>
-          {playlist.map((item) => (
-            <div className="song-item" key={item.track.id}>
-              <img src={item.track.album.images[0].url} alt={item.track.name} />
-              <div>
-                <h3>{item.track.name}</h3>
-                <p>{item.track.artists[0].name}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <PlaylistBox playlist={playlist} />
       </main>
     </div>
   );
