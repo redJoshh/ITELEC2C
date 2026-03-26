@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/NavBar";
 import Logo from "./components/Logo";
 import Result from "./components/Result";
 import Search from "./components/Search";
 
 import SongList from "./components/SongList";
-
+import Main from "./components/Main";
 import Box from "./components/Box";
 import BoxHeader from "./components/Boxheader";
 import Playlist from "./components/Playlist";
@@ -77,6 +77,26 @@ const tempPlaylistData = [
 ];
 
 export default function App() {
+  // fetch("https://jsonplaceholder.typicode.com/todos/2").then((result) =>
+  //   result.json().then((data) => console.log(data)),
+  // );
+
+  const [todos, setTodos] = useState(["hello"]);
+
+  useEffect(() => {
+    async function getTodos() {
+      const result = await fetch(
+        "https://jsonplaceholder.typicode.com/todos/2",
+      );
+
+      const data = await result.json();
+      setTodos(data);
+    }
+    getTodos();
+  }, []);
+
+  console.log(todos);
+
   const [playlist, setPlaylist] = useState(tempPlaylistData);
   const [music, setMusic] = useState(tempMusicData);
 
@@ -88,7 +108,7 @@ export default function App() {
         <Result music={music} />
       </Navbar>
 
-      <main className="main">
+      <Main>
         <Box music={music}>
           <BoxHeader>
             <h2>Available Songs ({music.length})</h2>
@@ -111,7 +131,10 @@ export default function App() {
 
           <Playlist playlist={playlist} />
         </Box>
-      </main>
+      </Main>
+      <div>
+        <p>{todos.title}</p>
+      </div>
     </div>
   );
 }
