@@ -5,8 +5,10 @@ import Result from "./components/Result";
 import Search from "./components/Search";
 
 import SongList from "./components/SongList";
-import MusicListBox from "./components/MusicListBox";
-import PlaylistBox from "./components/PlaylistBox";
+
+import Box from "./components/Box";
+import BoxHeader from "./components/Boxheader";
+import Playlist from "./components/Playlist";
 
 const tempMusicData = [
   {
@@ -87,9 +89,28 @@ export default function App() {
       </Navbar>
 
       <main className="main">
-        <MusicListBox music={music} />
+        <Box music={music}>
+          <BoxHeader>
+            <h2>Available Songs ({music.length})</h2>
+          </BoxHeader>
+          <SongList music={music} />
+        </Box>
 
-        <PlaylistBox playlist={playlist} />
+        <Box playlist={playlist}>
+          <BoxHeader>
+            <img
+              className="playlist-logo"
+              src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
+              alt="Playlist"
+            />
+            <div>
+              <h2>My Playlist ({playlist.length})</h2>
+              <p>Total songs in playlist</p>
+            </div>
+          </BoxHeader>
+
+          <Playlist playlist={playlist} />
+        </Box>
       </main>
     </div>
   );
