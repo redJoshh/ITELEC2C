@@ -76,39 +76,46 @@ const tempPlaylistData = [
   },
 ];
 
+const CLIENT_ID = "9b5b6bc460344e9a927f059d8c08d6e9";
+const CLIENT_SECRET = "fbe6db780c43450ab03c0256ee946a9a";
+
 export default function App() {
   // fetch("https://jsonplaceholder.typicode.com/todos/2").then((result) =>
   //   result.json().then((data) => console.log(data)),
   // );
 
-  const [todos, setTodos] = useState(["hello"]);
+  // const [todos, setTodos] = useState(["hello"]);
 
-  useEffect(() => {
-    async function getTodos() {
-      const result = await fetch(
-        "https://jsonplaceholder.typicode.com/todos/2",
-      );
+  // useEffect(() => {
+  //   async function getTodos() {
+  //     const result = await fetch(
+  //       "https://jsonplaceholder.typicode.com/todos/2",
+  //     );
 
-      const data = await result.json();
-      setTodos(data);
-    }
-    getTodos();
-  }, []);
+  //     const data = await result.json();
+  //     setTodos(data);
+  //   }
+  //   getTodos();
+  // }, [todos, setTodos]);
 
-  console.log(todos);
+  // console.log(todos);
 
   const [playlist, setPlaylist] = useState(tempPlaylistData);
-  const [music, setMusic] = useState(tempMusicData);
+  const [music, setMusic] = useState([]);
 
   return (
     <div>
       <Navbar>
         <Logo />
-        <Search />
+        <Search
+          CLIENT_ID={CLIENT_ID}
+          CLIENT_SECRET={CLIENT_SECRET}
+          setMusic={setMusic}
+        />
         <Result music={music} />
       </Navbar>
 
-      <Main>
+      <Main music={music} playlist={playlist}>
         <Box music={music}>
           <BoxHeader>
             <h2>Available Songs ({music.length})</h2>
@@ -132,9 +139,6 @@ export default function App() {
           <Playlist playlist={playlist} />
         </Box>
       </Main>
-      <div>
-        <p>{todos.title}</p>
-      </div>
     </div>
   );
 }
