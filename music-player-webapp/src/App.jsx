@@ -100,7 +100,7 @@ export default function App() {
 
   // console.log(todos);
 
-  const [playlist, setPlaylist] = useState(tempPlaylistData);
+  const [playlist, setPlaylist] = useState([]);
   const [music, setMusic] = useState([]);
 
   return (
@@ -120,7 +120,11 @@ export default function App() {
           <BoxHeader>
             <h2>Available Songs ({music.length})</h2>
           </BoxHeader>
-          <SongList music={music} />
+          <SongList
+            music={music}
+            playlist={playlist}
+            setPlaylist={setPlaylist}
+          />
         </Box>
 
         <Box playlist={playlist}>

@@ -1,4 +1,11 @@
-function SongList({ music }) {
+function SongList({ music, setPlaylist, playlist }) {
+  function addToPlaylist(addSong) {
+    const songInPlaylist = playlist.find((item) => item.id === addSong.id);
+
+    if (!songInPlaylist) {
+      setPlaylist([...playlist, addSong]);
+    }
+  }
   return (
     <div>
       {music.map((item) => (
@@ -7,7 +14,7 @@ function SongList({ music }) {
           <div>
             <h3>{item.name}</h3>
             <p>{item.artists[0].name}</p>
-            <button>Add to Playlist</button>
+            <button onClick={() => addToPlaylist(item)}>Add to Playlist</button>
           </div>
         </div>
       ))}
