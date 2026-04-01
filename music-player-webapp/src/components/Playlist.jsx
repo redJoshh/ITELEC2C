@@ -11,8 +11,10 @@ function Playlist({ playlist, setPlaylist }) {
           <div>
             <h3>{item.name}</h3>
             <p>{item.artists[0].name}</p>
+            <button onClick={() => removeFromPlaylist(item.id)}>
+              Remove from Playlist
+            </button>
           </div>
-          <button onClick={() => removeFromPlaylist(item.id)}>X</button>
         </div>
       ))}
     </div>
