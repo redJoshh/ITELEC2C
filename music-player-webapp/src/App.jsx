@@ -147,7 +147,7 @@ export default function App() {
             </div>
           </BoxHeader>
 
-          <Playlist playlist={playlist} />
+          <Playlist playlist={playlist} setPlaylist={setPlaylist} />
         </Box>
       </Main>
     </div>
