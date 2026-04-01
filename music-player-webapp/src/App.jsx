@@ -104,6 +104,7 @@ export default function App() {
     const savedPlaylist = localStorage.getItem("my-playlist");
     return savedPlaylist ? JSON.parse(savedPlaylist) : [];
   });
+
   const [music, setMusic] = useState([]);
 
   useEffect(() => {
