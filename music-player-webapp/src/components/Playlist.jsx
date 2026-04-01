@@ -1,4 +1,8 @@
-function Playlist({ playlist }) {
+function Playlist({ playlist, setPlaylist }) {
+  function removeFromPlaylist(id) {
+    setPlaylist(playlist.filter((song) => song.id !== id));
+  }
+
   return (
     <div>
       {playlist.map((item) => (
@@ -8,6 +12,7 @@ function Playlist({ playlist }) {
             <h3>{item.name}</h3>
             <p>{item.artists[0].name}</p>
           </div>
+          <button onClick={() => removeFromPlaylist(item.id)}>X</button>
         </div>
       ))}
     </div>
