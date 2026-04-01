@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Navbar from "./components/NavBar";
 import Logo from "./components/Logo";
 import Result from "./components/Result";
@@ -10,71 +10,71 @@ import Box from "./components/Box";
 import BoxHeader from "./components/Boxheader";
 import Playlist from "./components/Playlist";
 
-const tempMusicData = [
-  {
-    track: {
-      id: "1",
-      name: "Blinding Lights",
-      artists: [{ name: "The Weeknd" }],
-      album: {
-        images: [
-          {
-            url: "https://images.genius.com/34c1c35ca27a735e6e5f18611acb1c16.1000x1000x1.png",
-          },
-        ],
-      },
-      playCount: 2345,
-    },
-  },
-  {
-    track: {
-      id: "2",
-      name: "Levitating",
-      artists: [{ name: "Dua Lipa" }],
-      album: {
-        images: [
-          {
-            url: "https://images.genius.com/2cd6ade1ffff7398f5e33a1f4ce3040e.1000x1000x1.png",
-          },
-        ],
-      },
-      playCount: 1789,
-    },
-  },
-  {
-    track: {
-      id: "3",
-      name: "Peaches",
-      artists: [{ name: "Justin Bieber" }],
-      album: {
-        images: [
-          {
-            url: "https://i1.sndcdn.com/artworks-eb0MriwCeIEzf4mo-bUQc2A-t500x500.jpg",
-          },
-        ],
-      },
-      playCount: 2050,
-    },
-  },
-];
+// const tempMusicData = [
+//   {
+//     track: {
+//       id: "1",
+//       name: "Blinding Lights",
+//       artists: [{ name: "The Weeknd" }],
+//       album: {
+//         images: [
+//           {
+//             url: "https://images.genius.com/34c1c35ca27a735e6e5f18611acb1c16.1000x1000x1.png",
+//           },
+//         ],
+//       },
+//       playCount: 2345,
+//     },
+//   },
+//   {
+//     track: {
+//       id: "2",
+//       name: "Levitating",
+//       artists: [{ name: "Dua Lipa" }],
+//       album: {
+//         images: [
+//           {
+//             url: "https://images.genius.com/2cd6ade1ffff7398f5e33a1f4ce3040e.1000x1000x1.png",
+//           },
+//         ],
+//       },
+//       playCount: 1789,
+//     },
+//   },
+//   {
+//     track: {
+//       id: "3",
+//       name: "Peaches",
+//       artists: [{ name: "Justin Bieber" }],
+//       album: {
+//         images: [
+//           {
+//             url: "https://i1.sndcdn.com/artworks-eb0MriwCeIEzf4mo-bUQc2A-t500x500.jpg",
+//           },
+//         ],
+//       },
+//       playCount: 2050,
+//     },
+//   },
+// ];
 
-const tempPlaylistData = [
-  {
-    track: {
-      id: "4",
-      name: "Save Your Tears",
-      artists: [{ name: "The Weeknd" }],
-      album: {
-        images: [
-          {
-            url: "https://i1.sndcdn.com/artworks-OgzMLfEVNXHqSBhf-mhOejQ-t500x500.jpg",
-          },
-        ],
-      },
-      playCount: 1920,
-    },
-  },
-];
+// const tempPlaylistData = [
+//   {
+//     track: {
+//       id: "4",
+//       name: "Save Your Tears",
+//       artists: [{ name: "The Weeknd" }],
+//       album: {
+//         images: [
+//           {
+//             url: "https://i1.sndcdn.com/artworks-OgzMLfEVNXHqSBhf-mhOejQ-t500x500.jpg",
+//           },
+//         ],
+//       },
+//       playCount: 1920,
+//     },
+//   },
+// ];
 
 const CLIENT_ID = "9b5b6bc460344e9a927f059d8c08d6e9";
 const CLIENT_SECRET = "fbe6db780c43450ab03c0256ee946a9a";
@@ -100,8 +100,15 @@ export default function App() {
 
   // console.log(todos);
 
-  const [playlist, setPlaylist] = useState([]);
+  const [playlist, setPlaylist] = useState(() => {
+    const savedPlaylist = localStorage.getItem("my-playlist");
+    return savedPlaylist ? JSON.parse(savedPlaylist) : [];
+  });
   const [music, setMusic] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("my-playlist", JSON.stringify(playlist));
+  }, [playlist]);
 
   return (
     <div>
