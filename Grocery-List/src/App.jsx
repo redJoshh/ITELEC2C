@@ -14,6 +14,22 @@ export default function App() {
 
   const [sortBy, setSortBy] = useState("Date");
 
+  // useEffect(() => {
+  //   async function getItems() {
+  //     try {
+  //       const response = await fetch(
+  //         `https://jsonplaceholder.typicode.com/todos`,
+  //       );
+
+  //       const data = await response.json();
+  //       setItems(data);
+  //     } catch (error) {
+  //       console.error("Error in fetching data", error);
+  //     }
+  //   }
+  //   getItems();
+  // }, []);
+
   let sortedItems;
 
   if (sortBy === "Date") sortedItems = items;
