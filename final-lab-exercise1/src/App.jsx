@@ -68,7 +68,7 @@ function App() {
       {results.length === 0 ? (
         <p>No Movie found</p>
       ) : (
-        results.map((item) => <p key={item.imdbID}>{item.Title}</p>)
+        results.map((item, index) => <p key={index}>{item.Title}</p>)
       )}
     </div>
   );
